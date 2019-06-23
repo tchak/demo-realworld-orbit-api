@@ -1,31 +1,101 @@
 {
   "models": {
-    "planet": {
+    "article": {
       "attributes": {
-        "name": {
-          "type": "string"
-        }
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "body": { "type": "string" },
+        "createdAt": { "type": "datetime" },
+        "updatedAt": { "type": "datetime" }
       },
       "relationships": {
-        "moons": {
+        "author": {
+          "type": "hasOne",
+          "model": "profile",
+          "inverse": "articles"
+        },
+        "tags": {
           "type": "hasMany",
-          "model": "moon",
-          "inverse": "planet",
-          "dependent": "remove"
+          "model": "tag",
+          "inverse": "articles"
+        },
+        "comments": {
+          "type": "hasMany",
+          "model": "comment",
+          "inverse": "article"
+        },
+        "favoritedBy": {
+          "type": "hasMany",
+          "model": "profile",
+          "inverse": "favoritedArticles"
         }
       }
     },
-    "moon": {
+    "comment": {
+      "attributes": {
+        "body": { "type": "string" },
+        "createdAt": { "type": "datetime" },
+        "updatedAt": { "type": "datetime" }
+      },
+      "relationships": {
+        "author": {
+          "type": "hasOne",
+          "model": "profile",
+          "inverse": "comments"
+        },
+        "article": {
+          "type": "hasOne",
+          "model": "article",
+          "inverse": "comments"
+        }
+      }
+    },
+    "tag": {
       "attributes": {
         "name": {
           "type": "string"
         }
       },
       "relationships": {
-        "planet": {
-          "type": "hasOne",
-          "model": "planet",
-          "inverse": "moons"
+        "articles": {
+          "type": "hasMany",
+          "model": "article",
+          "inverse": "tags"
+        }
+      }
+    },
+    "profile": {
+      "attributes": {
+        "username": { "type": "string" },
+        "bio": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "relationships": {
+        "favoritedArticles": {
+          "type": "hasMany",
+          "model": "article",
+          "inverse": "favoritedBy"
+        },
+        "followedProfiles": {
+          "type": "hasMany",
+          "model": "profile",
+          "inverse": "followedBy"
+        },
+        "followedBy": {
+          "type": "hasMany",
+          "model": "profile",
+          "inverse": "followedProfiles"
+        },
+        "articles": {
+          "type": "hasMany",
+          "model": "article",
+          "inverse": "author"
+        },
+        "comments": {
+          "type": "hasMany",
+          "model": "comment",
+          "inverse": "author"
         }
       }
     }

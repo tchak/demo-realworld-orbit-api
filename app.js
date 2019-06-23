@@ -12,9 +12,8 @@ module.exports = function(fastify, opts, next) {
   const source = new SQLSource({
     schema,
     knex: {
-      client: 'sqlite3',
-      connection: { filename: ':memory:' },
-      useNullAsDefault: true
+      client: 'pg',
+      connection: process.env.DATABASE_URL
     }
   });
 
