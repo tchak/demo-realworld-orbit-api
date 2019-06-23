@@ -21,6 +21,7 @@ module.exports = function(fastify, opts, next) {
     source,
     jsonapi: true,
     graphql: {
+      introspection: true,
       playground: true
     }
   });
