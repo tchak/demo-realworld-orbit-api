@@ -20,7 +20,9 @@ module.exports = function(fastify, opts, next) {
   fastify.register(Plugin, {
     source,
     jsonapi: true,
-    graphql: true
+    graphql: {
+      playground: true
+    }
   });
 
   next();
