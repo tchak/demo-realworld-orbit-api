@@ -22,7 +22,11 @@ module.exports = function(fastify, opts, next) {
     jsonapi: true,
     graphql: {
       introspection: true,
-      playground: true
+      playground: {
+        settings: {
+          'schema.polling.enable': false
+        }
+      }
     }
   });
 
