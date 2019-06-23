@@ -14,5 +14,8 @@
   "scripts": {
     "start": "fastify start -l info -P app.js",
     "start:heroku": "fastify start -a '0.0.0.0' -l info app.js"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
