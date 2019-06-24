@@ -1,6 +1,7 @@
 {
   "models": {
     "article": {
+      "keys": { "remoteId": {} },
       "attributes": {
         "slug": { "type": "string" },
         "title": { "type": "string" },
@@ -33,6 +34,7 @@
       }
     },
     "comment": {
+      "keys": { "remoteId": {} },
       "attributes": {
         "body": { "type": "string" },
         "createdAt": { "type": "datetime" },
@@ -52,6 +54,7 @@
       }
     },
     "tag": {
+      "keys": { "remoteId": {} },
       "attributes": {
         "name": {
           "type": "string"
@@ -66,6 +69,7 @@
       }
     },
     "profile": {
+      "keys": { "remoteId": {} },
       "attributes": {
         "username": { "type": "string" },
         "bio": { "type": "string" },
